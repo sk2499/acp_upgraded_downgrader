@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<script>
+function selectOnlyThisForFcc(id) {
+    for (var i = 1;i <= 2; i++)
+    {
+        document.getElementById("Fcc" + i).checked = false;
+    }
+    document.getElementById(id).checked = true;
+    var item = document.getElementById(id).name;
+    if (item == "FCC"){
+        item = "NMS%20-%20USA%20(Linux)";
+        }
+    else if (item = "Non_Fcc"){
+        item = "NMS%20(Linux)";
+    }
+}
+function selectOnlyThisForupgrade(id){
+    for (var i = 1;i <= 2; i++)
+    {
+        document.getElementById("upgrade" + i).checked = false;
+    }
+    document.getElementById(id).checked = true;
+
+}
+function selectOnlyThisForSR(id){
+    for (var i = 1;i <= 7; i++)
+    {
+        document.getElementById("myCheck" + i).checked = false;
+    }
+    document.getElementById(id).checked = true;
+    var SR_Version = document.getElementById(id).name;
+}
+</script>
+</head>
+<body style="background-color:rgb(236, 236, 210);">
+<img src="https://logos-download.com/wp-content/uploads/2020/06/Airspan_Logo.png"alt="airspan_logo",width="150" height="150", align="right">
+<li align="right"><a href="/logout">Logout</a></li>
+<h1 >Acp Upgrader Downgrader Tool</h1>
+<h2>Welcome {{ user.get("name") }}!</h2>
+<h2 style="text-align:center;">Please provide the below details:</h2>
+
+<form name="DetailsForm" method="post">
+
+<b>Select the Acp IP</b>
+<select name="ACP IP" id="ACP IP" required>
+<option></option>
+<option value="10.23.101.207">10.23.101.207</option>
+<option value="10.23.101.197">10.23.101.197</option>
+<option value="10.23.105.12">10.23.105.12</option>
+<option value="10.23.105.22">10.23.105.22</option>
+<option value="10.23.105.32">10.23.105.32</option>
+<option value="10.23.105.33">10.23.105.33</option>
+<option value="10.23.105.37">10.23.105.37</option>
+<option value="172.20.63.203">172.20.63.203</option>
+<option value="172.20.63.208">172.20.63.208</option>
+<option value="172.20.63.211">172.20.63.211</option>
+<option value="172.20.63.207">172.20.63.207</option>
+</select>
+
+<br> <br>
+    <p>Select any one option FCC / Non Fcc</p>
+    <input type="checkbox" id="Fcc1" name=FCC onclick="selectOnlyThisForFcc(this.id)" checked>:FCC
+    <input type="checkbox" id="Fcc2" name=Non_Fcc onclick="selectOnlyThisForFcc(this.id)">:Non FCC<br><br>
+
+    <p>Select any one option upgrade / downgrade</p>
+    <input type="checkbox" id="upgrade1" name="upgrade" onclick="selectOnlyThisForupgrade(this.id)" checked>:Upgrade
+    <input type="checkbox" id="upgrade2" name="downgrade" onclick="selectOnlyThisForupgrade(this.id)">:Downgrade<br><br><br>
+
+<label for="Upgrade1">Version to which the ACP Needs to be Upgraded/Downgraded:</label><br>
+    <input type="text" id="Upgrade/Downgrade" name="Upgrade/Downgrade" required pattern=".{13}"><br><br>
+
+    <p>SR Version</p>
+    <input type="checkbox" id="myCheck1" name="17.0" onclick="selectOnlyThisForSR(this.id)">:17.0
+    <input type="checkbox" id="myCheck2" name="17.5" onclick="selectOnlyThisForSR(this.id)">:17.5
+    <input type="checkbox" id="myCheck3" name="18.0" onclick="selectOnlyThisForSR(this.id)">:18.0
+    <input type="checkbox" id="myCheck4" name="18.5" onclick="selectOnlyThisForSR(this.id)">:18.5
+    <input type="checkbox" id="myCheck5" name="19.0" onclick="selectOnlyThisForSR(this.id)">:19.0
+    <input type="checkbox" id="myCheck6" name="19.5" onclick="selectOnlyThisForSR(this.id)" checked>:19.5
+    <input type="checkbox" id="myCheck7" name="20.0" onclick="selectOnlyThisForSR(this.id)">:20.0<br><br>
+
+    <label for="Build_Number">Build Number</label><br>
+    <input type="text" id="Build_Number" name="Build_number" required pattern=".{3}"><br><br>
+
+    <p><input type="submit" value="Confirm" name="Submit"/> <input type="reset" value="Reset" name="Reset" /></p>
+</form>
+
+<p><a href='/downloadfiles'>Verify Details And Submit</a></p>
+
+{% if config.get("B2C_PROFILE_AUTHORITY") %}
+  <li><a href='{{_build_auth_code_flow(authority=config["B2C_PROFILE_AUTHORITY"])["auth_uri"]}}'>Edit Profile</a></li>
+{% endif %}
+
+
+
+</body>
+</html>
+

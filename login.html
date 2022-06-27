@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <body style="background-color:rgb(236, 236, 210);">
+    <img src="https://logos-download.com/wp-content/uploads/2020/06/Airspan_Logo.png"alt="airspan_logo",width="150" height="150", align="right">
+    <h1 >Acp Upgrader Downgrader Tool</h1>
+    <br><br><br><br>
+    <h1 style="text-align:center;"><a href='{{ auth_url }}'>Click here to log in</a></h1>
+    <h2 style="text-align:center;">Use Your Airspan Credentials to login</h2>
+    <br><br><br>
+    <h2>Steps to follow to use this tool</h2>
+    <p>1.Login into the tool using your airspan credentials and also verify using your mobile number</p>
+    <p>2.After successful login you have to provide the below mentioned details so that the acp version can be upgraded or downgraded accordingly </p>
+    <li>Acp Name</li>
+    <li>Version to which ACP needs to be upgraded</li>
+    <li>Version to which ACP needs to be downgraded</li>
+    <li>SR version</li>
+    <li>Build Number</li>
+    {% if config.get("B2C_RESET_PASSWORD_AUTHORITY") %}
+    <li><a href='{{_build_auth_code_flow(authority=config["B2C_RESET_PASSWORD_AUTHORITY"])["auth_uri"]}}'>Reset Password</a></li>
+    {% endif %}
+</body>
+</html>
+
+
